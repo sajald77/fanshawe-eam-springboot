@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,17 +27,19 @@ public class UserController {
     public UserController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
+    @CrossOrigin
     @GetMapping
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
+    @CrossOrigin
     @PostMapping("/register")
     public User createUser(@RequestBody User user) {
         return userRepository.save(user);
     }
 
+    @CrossOrigin
     @PostMapping("/login")
     public ResponseEntity<User> validateCredentials(@RequestBody User loginCredentials) {
         String email = loginCredentials.getEmail();
@@ -67,6 +70,7 @@ public class UserController {
         }
     }
 
+    @CrossOrigin
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
         Optional<User> optionalUser = userRepository.findById(id);
@@ -75,6 +79,7 @@ public class UserController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @CrossOrigin
     @PutMapping("/update/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
         Optional<User> optionalUser = userRepository.findById(id);
@@ -117,6 +122,7 @@ public class UserController {
         }
     }
 
+    @CrossOrigin
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         Optional<User> optionalUser = userRepository.findById(id);

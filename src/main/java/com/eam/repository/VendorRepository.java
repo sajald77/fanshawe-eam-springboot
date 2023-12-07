@@ -8,5 +8,5 @@ import java.util.List;
 
 
 public interface VendorRepository extends JpaRepository<Vendor, Long> {
-    List<Vendor> findByVendorType(String vendorType);
+    List<Vendor> findAllByVendorType(String vendorType);
 }

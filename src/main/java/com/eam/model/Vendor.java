@@ -3,12 +3,12 @@ package com.eam.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "vendor")
+@Table(name = "vendor", schema = "public")
 public class Vendor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "vendor_id")
+    @Column(name = "vendor_id", unique = true)
     private Long vendorId;
 
     public Long getVendorId() {

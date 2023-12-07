@@ -1,6 +1,7 @@
 package com.eam.repository;
 
 import com.eam.model.Event;
+import com.eam.model.Vendor;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     // List<Event> findByVendor(Vendor vendor);
 
     // get all events by vendor type
-    public List<Event> findByVendorVendorId(Long vendorId);
+    List<Event> findByVendorVendorId(Long vendorId);
+    List<Event> findByVendor(Vendor vendor);
 
 }

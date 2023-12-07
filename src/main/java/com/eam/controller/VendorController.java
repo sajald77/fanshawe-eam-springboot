@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,9 +20,10 @@ public class VendorController {
     @Autowired
     private VendorRepository vendorRepository;
 
+    @CrossOrigin
     @GetMapping("/{type}")
     public ResponseEntity<List<Vendor>> getAllVendorsByType(@PathVariable String type) {
-        List<Vendor> vendors = vendorRepository.findByVendorType(type);
+        List<Vendor> vendors = vendorRepository.findAllByVendorType(type);
         if (vendors.isEmpty()) {
             return ResponseEntity.notFound().build();
         } else {

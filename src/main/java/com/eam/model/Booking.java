@@ -3,12 +3,12 @@ package com.eam.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "bookings")
+@Table(name = "bookings", schema = "public")
 public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "booking_id")
+    @Column(name = "booking_id", unique = true)
     private Long bookingId;
 
     public Long getBookingId() {
@@ -49,7 +49,7 @@ public class Booking {
 
     //
     @ManyToOne
-    @JoinColumn(name = "vender_id", nullable = false)
+    @JoinColumn(name = "vendor_id", nullable = false)
     private Vendor vendor;
 
     public Vendor getVendor() {

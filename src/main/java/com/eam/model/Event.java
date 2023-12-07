@@ -10,11 +10,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "events")
+@Table(name = "events", schema = "public")
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "event_id")
+    @Column(name = "event_id", unique = true)
     private Long eventId;
 
     public Long geteventId() {
@@ -27,7 +27,7 @@ public class Event {
 
     //
     @ManyToOne
-    @JoinColumn(name = "vender_id", nullable = false)
+    @JoinColumn(name = "vendor_id", nullable = false)
     private Vendor vendor;
 
     public Vendor getVendor() {

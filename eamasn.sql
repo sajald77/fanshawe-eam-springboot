@@ -18,7 +18,7 @@ CREATE TABLE Users (
 
     last_name VARCHAR(50), 
 
-    image_url VARCHAR(80), 
+    image_url VARCHAR(255), 
 
     is_active BOOLEAN DEFAULT FALSE, 
 
@@ -41,7 +41,7 @@ CREATE TABLE Vendor (
 
     email VARCHAR(255), 
 
-    image_url VARCHAR(80)
+    image_url VARCHAR(255)
 
 ); 
 
