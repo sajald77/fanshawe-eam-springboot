@@ -93,4 +93,25 @@ public class BookingController {
 
     }
 
+    @CrossOrigin
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> removeBooking(@PathVariable Long id) {
+
+        try {
+
+            Optional<Booking> checkBooking = bookingRepository.findById(id);
+            if(!checkBooking.isPresent()) {
+                throw new Exception("booking not found");
+            }
+            
+            bookingRepository.deleteById(id);
+
+            return ResponseEntity.ok("successfully deleted");
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Failed to delete");
+        }
+
+    }
+
 }
